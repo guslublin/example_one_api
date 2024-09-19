@@ -4,8 +4,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny  # Importa AllowAny
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Producto
-from .serializers import ProductoSerializer
+from .models import Producto, Mascota, Cliente
+from .serializers import ProductoSerializer, MascotaSerializer, ClienteSerializer
 
 # Registro de usuarios
 @api_view(['POST'])
@@ -31,3 +31,13 @@ def register_user(request):
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+
+# Vista de mascotas
+class MascotaViewSet(viewsets.ModelViewSet):
+    queryset = Mascota.objects.all()
+    serializer_class = MascotaSerializer
+
+# Vista de clientes
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer

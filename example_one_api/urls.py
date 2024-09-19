@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from productos.views import ProductoViewSet, register_user
+from productos.views import ProductoViewSet, register_user, MascotaViewSet, ClienteViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -25,6 +25,8 @@ from rest_framework_simplejwt.views import (
 
 router = DefaultRouter()
 router.register(r'productos', ProductoViewSet)
+router.register(r'mascotas', MascotaViewSet)
+router.register(r'clientes', ClienteViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

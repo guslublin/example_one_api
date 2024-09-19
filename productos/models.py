@@ -9,3 +9,25 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Mascota(models.Model):
+    nombre = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    raza = models.CharField(max_length=100)
+    procedencia = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+    
+
+class Cliente(models.Model):
+    nombre = models.CharField(max_length=100)
+    ci = models.PositiveIntegerField()  # CI como número positivo
+    fecha_nacimiento = models.DateField()
+    direccion = models.CharField(max_length=255)
+    barrio = models.CharField(max_length=100)
+    ciudad = models.CharField(max_length=100)
+    observacion = models.TextField(blank=True, null=True)  # Observación puede ser opcional
+
+    def __str__(self):
+        return self.nombre
