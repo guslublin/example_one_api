@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Producto, Mascota, Cliente
 from .serializers import ProductoSerializer, MascotaSerializer, ClienteSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Registro de usuarios
 @api_view(['POST'])
@@ -41,3 +42,4 @@ class MascotaViewSet(viewsets.ModelViewSet):
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
+    permission_classes = [IsAuthenticated]

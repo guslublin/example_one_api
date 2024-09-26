@@ -6,12 +6,14 @@ class ProductoSerializer(serializers.ModelSerializer):
         model = Producto
         fields = '__all__'
 
-class MascotaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Mascota
-        fields = '__all__'  
-
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = '__all__'
+        fields = ['id', 'nombre', 'ci', 'fecha_nacimiento', 'direccion', 'barrio', 'ciudad', 'observacion']
+
+class MascotaSerializer(serializers.ModelSerializer):
+    cliente = serializers.PrimaryKeyRelatedField(queryset=Cliente.objects.all())  # Relación con Cliente
+
+    class Meta:
+        model = Mascota
+        fields = ['id', 'nombre', 'fecha_nacimiento', 'raza', 'procedencia', 'cliente']
